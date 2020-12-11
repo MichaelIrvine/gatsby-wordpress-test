@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: ".env",
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby WordPress Starter`,
@@ -15,6 +19,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -24,18 +29,18 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
       resolve: "gatsby-source-wordpress",
       options: {
         minimizeDeprecationNotice: true,
-        baseUrl: "gatsby-wordpress-course.local",
+        baseUrl: "wpgatsbytestsite.local",
         protocol: "http",
         hostingWPCOM: false,
-        useACF: false,
-        verboseOutput: false,
+        useACF: true,
+        verboseOutput: true,
         perPage: 100,
         concurrentRequests: 10,
         includedRoutes: [
@@ -46,6 +51,10 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
+          "**/menus",
+          "**/portfolio",
+          "**/logo",
+          "**/favicon",
         ],
       },
     },

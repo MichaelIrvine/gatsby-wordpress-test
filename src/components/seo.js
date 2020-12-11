@@ -1,8 +1,7 @@
 /**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
+ * Using the seo.js file shipped with the started made by Tom Phill
+ * add allWordpressWpFavicon to query then add favicon link to Helmet
+ * In gatsby-config remove icon in options for gatsby-plugin-manifest
  */
 
 import React from "react"
@@ -11,7 +10,7 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { site, allWordpressWpFavicon } = useStaticQuery(
     graphql`
       query {
         site {
@@ -19,6 +18,15 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+          }
+        }
+        allWordpressWpFavicon {
+          edges {
+            node {
+              url {
+                source_url
+              }
+            }
           }
         }
       }
@@ -68,7 +76,12 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        rel="icon"
+        href={allWordpressWpFavicon.edges[0].node.url.source_url}
+      />
+    </Helmet>
   )
 }
 
