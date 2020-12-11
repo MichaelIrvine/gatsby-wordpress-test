@@ -73,7 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
   } = result.data
 
   // Create Page pages.
-  const pageTemplate = path.resolve(`./src/templates/pages/index.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
   const portfolioItems = path.resolve(`./src/templates/portfolioItems.js`)
 
   allWordpressPage.edges.forEach(edge => {
@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const portfolioTemplate = path.resolve(`./src/templates/posts/portfolio.js`)
+  const portfolioTemplate = path.resolve(`./src/templates/portfolio.js`)
 
   allWordpressWpPortfolio.edges.forEach(edge => {
     createPage({
@@ -99,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const posts = allWordpressPost.edges
-  const postTemplate = path.resolve(`./src/templates/posts/blog.js`)
+  const postTemplate = path.resolve(`./src/templates/blog.js`)
   const postPerPage = 2
   const numOfPages = Math.ceil(posts.length / postPerPage)
 
