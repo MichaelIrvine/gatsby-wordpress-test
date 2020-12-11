@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import PortfolioItems from "../components/PortfolioItems"
-import SEO from "../components/SEO"
+import SEO from "../components/seo"
 
 const portfolioItemsTemplate = ({ pageContext }) => {
   return (
